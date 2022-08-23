@@ -1,0 +1,20 @@
+@use "../../../../shared/constants/colors" as colors;
+
+.content-div {
+  text-align: center;
+
+  p {
+    margin: 0 4px;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  span {
+    color: colors.$darkGray;
+  }
+}
+
+.avatar-div {
+  display: flex;
+  align-items: center;
+}

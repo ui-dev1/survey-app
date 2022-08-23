@@ -1,0 +1,17 @@
+@use '../../shared/constants/colors' as colors;
+
+.dashboard__heading {
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px;
+}
+
+.discussion__link {
+    text-decoration: none;
+    color: colors.$black;
+}
+
+.cards__container {
+    display: flex;
+    justify-content: space-between;
+}

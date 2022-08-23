@@ -1,0 +1,10 @@
+@use '../shared/constants/colors' as colors;
+
+.layout {
+    background-color: colors.$aliceBlue;
+}
+
+.layout-container {
+    margin: 16px;
+    padding: 16px;  
+}

@@ -1,0 +1,5 @@
+@use './components/shared/constants/colors' as colors;
+
+.App {
+  background-color: colors.$aliceBlue;
+}

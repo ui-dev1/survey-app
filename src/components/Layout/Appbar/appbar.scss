@@ -1,0 +1,33 @@
+@use '../../shared/constants/colors' as colors;
+
+.header {
+    /* position: fixed;
+    top: 0; */
+    background-color: colors.$white;
+    width: 100%;
+    z-index: 1;
+}
+
+.flex-div {
+    display: flex;
+}
+
+.header__item {
+    flex: 1;
+}
+
+.logo-container {
+    border-right: 1px solid colors.$gray;
+    margin: 0 8px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+svg.header__logo {
+    width: 100px;
+}
+
+.search-div {
+    align-items: center;
+    padding: 0 8px;
+}
