@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Avatar, Badge, IconButton } from '@mui/material';
 import { colors } from '../../../../shared/constants/colors';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import StarIcon from '@mui/icons-material/Star';
 import Table from '../../../../shared/Table/Table';
 import './systemDataQuestions.scss';
 
 const SystemDataQuestionsTable = (props) => {
+    const [order, setOrder] = useState('asc');
+    const [orderBy, setOrderBy] = useState('topic');
     const dotColors = [colors.darkGray, colors.lightBlue, colors.green];
-    const formatTable = () => {
-        const formattedData = props?.data?.map((row, index) => ({
+    const columns = [
+        { id: 'icon', label: 'S.No.', numeric: false },
+        { id: 'topic', label: 'Name of Discussion Guide', numeric: false, width: '375px' },
+        { id: 'reusedGuides', label: 'Business Objectives', numeric: true },
+        { id: 'questions', label: 'No. of Questions', numeric: true },
+        { id: 'avatar', label: 'Last Update By', numeric: false, width: '180px' },
+        { id: 'actions', label: 'Favourites', numeric: false, width: '100px' },
+    ]
+    const formatTable = (sortedData) => {
+        const formattedData = sortedData?.map((row, index) => ({
             icon: <Badge
                 variant="dot"
                 anchorOrigin={{
@@ -27,11 +38,9 @@ const SystemDataQuestionsTable = (props) => {
             topic: row?.topic,
             reusedGuides: <div className='content-div'>
                 <p>{row?.reusedGuides}</p>
-                <span>Reused Guides</span>
             </div>,
             questions: <div className='content-div'>
                 <p>{row?.questions}</p>
-                <span>Questions</span>
             </div>,
             avatar: <div className="avatar-div">
                 <Avatar alt={row?.lastEditedBy} src={row?.lastEditedByPhoto} sx={{
@@ -39,18 +48,35 @@ const SystemDataQuestionsTable = (props) => {
                 }} />
                 <div className='content-div'>
                     <p>{row?.lastEditedBy}</p>
-                    <span>Last edited by</span>
+                    <span>{row?.lastEditedDate}</span>
                 </div>
             </div>,
             actions:
                 <IconButton>
-                    <MoreHorizOutlinedIcon />
+                    {
+                        (row?.active) ?
+                            <StarIcon />
+                            : <StarOutlineIcon onClick={() => props.handleClick(row?.id)} />
+                    }
                 </IconButton>
         }));
         return formattedData;
     }
+
+    const handleRequestSort = (event, property) => {
+        const isAsc = orderBy === property && order === 'asc';
+        setOrder(isAsc ? 'desc' : 'asc');
+        setOrderBy(property);
+    };
     return (
-        <Table data={formatTable()} />
+        <Table
+            headCells={columns}
+            data={props?.data || []}
+            formatTable={formatTable}
+            order={order}
+            orderBy={orderBy}
+            onRequestSort={handleRequestSort}
+        />
     )
 }
 

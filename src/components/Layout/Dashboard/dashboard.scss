@@ -15,3 +15,21 @@
     display: flex;
     justify-content: space-between;
 }
+.tabs__header {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.filter__container {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+.btn__filter {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}

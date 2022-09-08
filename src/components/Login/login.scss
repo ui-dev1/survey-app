@@ -1,0 +1,76 @@
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+.messageCard {
+    width: 70%;
+    background-image: url('../../assets/blueBackground.png');
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 2em;
+}
+.image1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+}
+.image2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.image3 {
+    position: absolute;
+    right: 7rem;
+    bottom: 5rem;
+    width: 38%;
+}
+.title {
+    width: 95%;
+}
+.contentContainer {
+    position: relative;
+    width: 58%;   
+}
+.content {
+    color: white;
+}
+.formCard {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 3rem;
+}
+.formField {
+    width: 100%;
+    /* height: 5%; */
+}
+.logo {
+    width: 50%;
+    margin-bottom: 2rem;
+}
+.signForm {
+    margin-top: 2rem;
+}
+.textContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+.forgot {
+    color: #004A7C;
+    text-decoration: underline;
+}
+.MuiButton-contained {
+    width: 100%;
+}
+.captionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;  
+}
