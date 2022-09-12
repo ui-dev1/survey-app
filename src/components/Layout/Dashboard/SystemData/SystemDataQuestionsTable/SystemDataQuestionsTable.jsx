@@ -16,7 +16,7 @@ const SystemDataQuestionsTable = (props) => {
         { id: 'topic', label: 'Name of Discussion Guide', numeric: false, width: '375px' },
         { id: 'reusedGuides', label: 'Business Objectives', numeric: true },
         { id: 'questions', label: 'No. of Questions', numeric: true },
-        { id: 'avatar', label: 'Last Update By', numeric: false, width: '180px' },
+        { id: 'lastEditedBy', label: 'Last Update By', numeric: false, width: '180px' },
         { id: 'actions', label: 'Favourites', numeric: false, width: '100px' },
     ]
     const formatTable = (sortedData) => {
