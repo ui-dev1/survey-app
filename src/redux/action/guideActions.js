@@ -1,0 +1,7 @@
+export const discussionGuideActionTypes = {
+    GET_DISCUSSION_GUIDE_DATA: "GET_DISCUSSION_GUIDE_DATA",
+    SET_DISCUSSION_GUIDE_DATA: "SET_DISCUSSION_GUIDE_DATA",
+    SET_DISCUSSION_GUIDE_DATA_FAILURE: "SET_DISCUSSION_GUIDE_DATA_FAILURE"
+};
+
+export const getDiscussionGuideData = () => ({ type: discussionGuideActionTypes.GET_DISCUSSION_GUIDE_DATA });

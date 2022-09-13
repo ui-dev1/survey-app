@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Card, CardContent, Typography, Link, Grid } from '@mui/material'
+import "./discussion.scss"
+import { guideActions } from '../../../redux/action';
+import { useDispatch, useSelector } from 'react-redux'
+import Search from '../../shared/Search/Search';
 
 const Discussion = () => {
-    const a = [1, 2, 3, 4, 5];
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(guideActions.getDiscussionGuideData());
+
+    }, [dispatch]);
+    const { discussionGuideSearchData } = useSelector((state) => state.discussionGuide)
     return (
         <div>
             <Typography
@@ -11,26 +20,35 @@ const Discussion = () => {
             >
                 Create a Discussion Guide
             </Typography>
+            <Search />
             <Grid container spacing={1}>
                 {
-                    a.map((card) => {
+                    discussionGuideSearchData.map((data) => {
                         return(
                             <Grid item xs={3}>
-                                <Card className='card__container'>
+                                <Card sx={{ borderRadius: '16px'}} variant='outlined' className='card__container'>
                                     <CardContent>
+                                        <Typography
+                                            variant="caption"
+                                            gutterBottom
+                                            className='content__pos period__color'
+                                        >
+                                            {data.modifiedOn} ago
+                                        </Typography>
                                         <Typography
                                             variant="h6"
                                             gutterBottom
                                         >
-                                            Competitive landscape
+                                            {data.name}
                                         </Typography>
                                         <Typography
                                             variant="body2"
                                             gutterBottom
+                                            className='desc__color'
                                         >
-                                            Understand perceived image of client vs competitor products. Undisclose physicians' motivations and triggers to use different products.
+                                            {data.description}
                                         </Typography>
-                                        <Link href="#" underline="none">
+                                        <Link href="#" underline="none" className='content__pos txt__link'>
                                             Select
                                         </Link>
                                     </CardContent>

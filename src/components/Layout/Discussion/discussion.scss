@@ -1,3 +1,21 @@
-.card__container{
-    border-radius: 16px;
+.card__container {
+    height: 100%;
+    position: relative;
+}
+.content__pos {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 11px;
+}
+.txt__link {
+    font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.period__color {
+    color: #6E798C;
+}
+.desc__color {
+    color: #374A59;
 }
