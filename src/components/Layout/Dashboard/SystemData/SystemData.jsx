@@ -6,6 +6,7 @@ import { colors } from '../../../shared/constants/colors';
 import "./systemData.scss";
 import SystemDataQuestionsTable from "./SystemDataQuestionsTable/SystemDataQuestionsTable";
 import {uniq} from "lodash";
+import moment from "moment/moment";
 
 const SystemData = ({
     searchValue,
@@ -16,8 +17,16 @@ const SystemData = ({
 
     const [questionContent, setQuestionContent] = React.useState([]);
 
+    const formattedSystemData = systemDataQuestions[0]?.data?.map((each) => {
+        return({
+            ...each,
+            lastEditedDate: moment(each.lastEditedDate).format("DD/MM/YYYY"),
+            time: moment(each.lastEditedDate).format("HH:MM a")
+        })
+    });
+
     React.useEffect(() => {
-        const initArray = systemDataQuestions[0]?.data;
+        const initArray = formattedSystemData;
         setQuestionContent(initArray);
     }, [systemDataQuestions])
 
@@ -43,7 +52,7 @@ const SystemData = ({
             filteredRows = uniq(filteredRows, 'id');
             setQuestionContent(filteredRows);
         } else {
-            setQuestionContent(systemDataQuestions[0]?.data)
+            setQuestionContent(formattedSystemData)
         }
     }, [searchValue])
 
@@ -55,7 +64,7 @@ const SystemData = ({
             })
             setQuestionContent(filteredRows);
         } else {
-            setQuestionContent(systemDataQuestions[0]?.data)
+            setQuestionContent(formattedSystemData)
         }
     }, [checked])
 

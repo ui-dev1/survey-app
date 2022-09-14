@@ -63,6 +63,7 @@ const BasicTable = (props) => {
                                 key={headCell.id}
                                 align='left'
                                 padding='0 15px'
+                                sx={{ fontWeight: 'bold' }}
                                 style={headCell.numeric ? {} : { width: headCell.width }}
                                 sortDirection={orderBy === headCell.id ? order : false}
                             >

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Avatar, Badge, IconButton } from '@mui/material';
+import { Avatar, IconButton, Typography } from '@mui/material';
 import { colors } from '../../../../shared/constants/colors';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
@@ -16,25 +16,13 @@ const SystemDataQuestionsTable = (props) => {
         { id: 'topic', label: 'Name of Discussion Guide', numeric: false, width: '375px' },
         { id: 'reusedGuides', label: 'Business Objectives', numeric: true },
         { id: 'questions', label: 'No. of Questions', numeric: true },
-        { id: 'lastEditedBy', label: 'Last Update By', numeric: false, width: '180px' },
+        { id: 'lastEditedDate', label: 'Date & Time', numeric: false },
+        { id: 'lastEditedBy', label: 'Name', numeric: false, width: '120px' },
         { id: 'actions', label: 'Favourites', numeric: false, width: '100px' },
     ]
     const formatTable = (sortedData) => {
         const formattedData = sortedData?.map((row, index) => ({
-            icon: <Badge
-                variant="dot"
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'right',
-                }}
-                sx={{
-                    "& .MuiBadge-badge": {
-                        backgroundColor: dotColors[index % 3],
-                    },
-                    margin: '0 16px'
-                }}>
-                <DescriptionOutlinedIcon />
-            </Badge>,
+            icon: <Typography variant="h6" gutterBottom>{row?.id}</Typography>,
             topic: row?.topic,
             reusedGuides: <div className='content-div'>
                 <p>{row?.reusedGuides}</p>
@@ -42,19 +30,15 @@ const SystemDataQuestionsTable = (props) => {
             questions: <div className='content-div'>
                 <p>{row?.questions}</p>
             </div>,
-            avatar: <div className="avatar-div">
-                <Avatar alt={row?.lastEditedBy} src={row?.lastEditedByPhoto} sx={{
-                    margin: '0 8px',
-                }} />
-                <div className='content-div'>
-                    <p>{row?.lastEditedBy}</p>
-                    <span>{row?.lastEditedDate}</span>
-                </div>
+            lastEditedDate: <div>
+                <Typography variant="body2" gutterBottom>{row?.lastEditedDate}</Typography>
+                <Typography variant="body2" gutterBottom>{row?.time}</Typography>
             </div>,
+            name: <Typography variant="body2" gutterBottom>{row?.lastEditedBy}</Typography>,
             actions:
                 <IconButton>
                     {
-                        (row?.active) ?
+                        (row?.isMarked) ?
                             <StarIcon />
                             : <StarOutlineIcon onClick={() => props.handleClick(row?.id)} />
                     }
@@ -68,6 +52,7 @@ const SystemDataQuestionsTable = (props) => {
         setOrder(isAsc ? 'desc' : 'asc');
         setOrderBy(property);
     };
+    console.log(props?.data)
     return (
         <Table
             headCells={columns}
