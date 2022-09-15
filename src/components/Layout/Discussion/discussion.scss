@@ -12,10 +12,42 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
+    cursor: pointer;
 }
 .period__color {
     color: #6E798C;
 }
 .desc__color {
     color: #374A59;
+}
+.box__container {
+    width: 98%;
+    padding: 5px 20px 20px 10px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+.search__container {
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: unset;
+    box-shadow: unset !important;
+}
+.search {
+    background: rgba(242, 248, 251, 0.36);
+    border: 1px solid rgba(124, 135, 159, 0.12);
+    padding: 10px;
+    margin-left: unset !important;
+    border-left: unset;
+    border-radius: 0 4px 4px 0;
+}
+.icon__button {
+    border: 1px solid rgba(124, 135, 159, 0.12) !important;
+    border-right: unset !important;
+    padding: 0 0 0 10px !important;
+    border-radius: 4px 0 0 4px !important;
+    background-color: rgba(242, 248, 251, 0.36) !important;
+    height: 2.25em;
 }
